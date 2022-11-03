@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best joke</title>
+    <style>
+        .container {
+            background-color: aquamarine;
+            height: 400px;
+            width: 500px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            text-align: center;
+            margin-top: 200px;
+            margin-left: 400px;
+        }
+
+        .container h3 {
+            align-items: center;
+            text-align: center;
+            margin-top: -250px;
+            margin-left: 100px;
+
+        }
+
+        .Joke {
+            align-items: center;
+            text-align: center;
+            margin-top: -100px;
+            margin-left: 10px;
+
+        }
+
+        .container button {
+            align-items: center;
+            text-align: center;
+            margin-top: 250px;
+            margin-left: -10px;
+            color: yellowgreen;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>😛Best joke to make your day👻</h3>
+        <div id="Joke" class="Joke">Awesome Joke is loading...</div>
+        <br>
+        <button id="JokeBtn" class="btn">Next Joke</button>
+    </div>
+
+
+
+    <script>
+
+        const Joke = document.querySelector('#Joke')
+        const JokeBtn = document.querySelector('#JokeBtn')
+
+        const generateJoke = () => {
+
+            const setHeader = {
+
+                headers: {
+                    Accept: "application/json"
+                }
+            }
+            fetch('https://icanhazdadjoke.com', setHeader)
+                .then((res) =>  res.json() )
+                .then((data) => {
+                    Joke.innerHTML = data.json;
+                }).catch((Error) => {
+                    console.log(Error);
+                })
+
+
+
+
+
+
+            JokeBtn.addEventListener('click', generateJoke);
+            generateJoke();
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+ </html>
